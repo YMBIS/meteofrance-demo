@@ -1,11 +1,15 @@
 package com.mvpjava.random;
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,7 +24,8 @@ public class MeteoFranceDemo extends JFrame {
 
 	private final AtmosphericRandom atmosphericRandom;
 	private JPanel contentPane;
-
+	private JPanel nutriPane;
+	private JPanel intPane;
 
 	static JPanel pannel_a = new JPanel();
 	static JPanel pannel_b = new JPanel();
@@ -36,7 +41,7 @@ public class MeteoFranceDemo extends JFrame {
 		this.atmosphericRandom = atmosphericRandom;
 		this.setTitle("MeteoFrance Demo - Yves PETRO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 580, 180);
+		setBounds(100, 100, 580, 220);
 		
 		initUI();
 		this.pack();
@@ -47,7 +52,12 @@ public class MeteoFranceDemo extends JFrame {
 	private void initUI() {
 		
 		contentPane = new JPanel();
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
+		contentPane.setPreferredSize(new Dimension(800, 200));
 
+		nutriPane = new JPanel();
+//		nutriPane.setLayout(new BoxLayout(nutriPane, BoxLayout.X_AXIS));
+		
 		JPanel pannel_a = new JPanel();
 		JPanel pannel_b = new JPanel();
 		JPanel pannel_c = new JPanel();
@@ -71,6 +81,10 @@ public class MeteoFranceDemo extends JFrame {
 		JLabel label_c = new JLabel("C");
 		JLabel label_d = new JLabel("D");
 		JLabel label_e = new JLabel("E");
+		
+		intPane = new JPanel();
+		JLabel label_value = new JLabel("");
+		//label_value.setPreferredSize(new Dimension(500,80));
 
 		pannel_a.add(label_a);
 		pannel_b.add(label_b);
@@ -78,11 +92,16 @@ public class MeteoFranceDemo extends JFrame {
 		pannel_d.add(label_d);
 		pannel_e.add(label_e);
 
-		contentPane.add(pannel_a);
-		contentPane.add(pannel_b);
-		contentPane.add(pannel_c);
-		contentPane.add(pannel_d);
-		contentPane.add(pannel_e);
+		nutriPane.add(pannel_a);
+		nutriPane.add(pannel_b);
+		nutriPane.add(pannel_c);
+		nutriPane.add(pannel_d);
+		nutriPane.add(pannel_e);
+		
+		intPane.add(label_value);
+		
+		contentPane.add(nutriPane);
+		contentPane.add(intPane);
 
 		this.setContentPane(contentPane);
 
@@ -99,6 +118,7 @@ public class MeteoFranceDemo extends JFrame {
 				pannel_e.setPreferredSize(dim_small);
 
 				int value = atmosphericRandom.nextInt(1, 0, 4)[0];
+				label_value.setText("Value received from Random.org : "+value);
 				//System.out.println("value = " + value);
 				switch (value) {
 				case 0:
@@ -119,8 +139,10 @@ public class MeteoFranceDemo extends JFrame {
 
 				}
 				
-		        contentPane.revalidate();
-		        contentPane.repaint();
+		        nutriPane.revalidate();
+		        nutriPane.repaint();
+		        label_value.revalidate();
+		        label_value.repaint();
 		        
 			}
 		});

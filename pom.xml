@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>atmospheric-random-httpclient</artifactId>
+	<artifactId>meteofrance-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>atmospheric-random-httpclient</name>
-	<description>Java Random Numbers via Atmospheric Noise using HttpClient</description>
+	<name>meteofrance-demo</name>
+	<description>Refreshing a swing component based on live data</description>
 
 	<properties>
 		<java.version>1.8</java.version>
