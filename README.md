@@ -1,23 +1,19 @@
-# atmospheric-random
-Demo Java Tutorial on how to creat a true random number via random.org which use atmospheric noise as its source!
+# meteofrance-demo
 
-This demo supports the Blog Post "Generating a Random Number in Java From Atmospheric Noise" at mvpjava.com at this link http://mvpjava.com/java-atmospheric-random/
+This small project is partially based on code from mvpjava.com.
 
-You will have to get your own API key from random.org (free) and include it in the application.properties file as the 'apiKey'
-If you do not, you will be using an expired key and you'll get the following error message "!!!! An error occurred null ... returning an empty value !!!!"
+As I was searching for the latest lightweight Java-JSON implementation, I came across a blog showing how to request Random.org API in Java.
+This code has been re-used, because it filled perfectly the objective without being overkill, and because it was already using SpringBoot, like I aimed to.
+It performs the HTTP Post calls, and the Json mapping.
+Credits go to http://mvpjava.com/java-atmospheric-random/
 
-=====================================================
 
-Subscribe to MVP Java ...
+For the Swing part : the class MeteoFranceDemo.java holds the view construction, and the timer.
 
-https://www.youtube.com/c/MVPJava?sub_confirmation=1
+The application.properties holds the Random.org service URI and the api-key (free for developers for 1k requests/day)
 
-Follow me ...
 
-Website  : http://www.mvpjava.com
+JRE 8 is required to execute the jar : from the project root directory, use : java -jar target/meteofrance-demo-0.0.1-SNAPSHOT.jar
+(The console logs the HTTP responses and the random integer obtained.)
 
-Facebook : https://www.facebook.com/mvpjava
-
-Twitter  : https://twitter.com/mvpjava
-
-DockerHub: https://hub.docker.com/?namespace=mvpjava
+Maven is required to build the project.
